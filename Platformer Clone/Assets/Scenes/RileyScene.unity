@@ -335,6 +335,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3bdcae33ffba4fbd968da26b91d3b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goingLeft: 0
+  projectilePrefab: {fileID: 1965796845}
+  Player: {fileID: 2062895322}
 --- !u!1 &519156660
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +537,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1965796845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8435075534240973156, guid: b8cc2a887f30a4d3ca2fc4d1c27af886, type: 3}
+  m_PrefabInstance: {fileID: 3053793960439908339}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2062895322
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,11 +743,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8435075534240973156, guid: b8cc2a887f30a4d3ca2fc4d1c27af886, type: 3}
       propertyPath: m_Name
-      value: bullet
+      value: Bullet
       objectReference: {fileID: 0}
     - target: {fileID: 8435075534240973156, guid: b8cc2a887f30a4d3ca2fc4d1c27af886, type: 3}
       propertyPath: m_TagString
-      value: bullet
+      value: Bullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

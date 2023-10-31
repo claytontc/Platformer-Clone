@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    public bool goingLeft;
+    public GameObject projectilePrefab;
+    public GameObject Player;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,17 +19,21 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position > GameObject.<PlayerController>)
-        {
-            //ShootRight();
+        if (Input.GetKey(KeyCode.Space))
+        { 
+            ShootBullet();
+            Debug.Log("Pressing Spacebar");
         }
     }
 
-    private void ShootRight()
+    private void ShootBullet()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            bulletinstance.GetComponent<bullet>();
-        }
+        
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+            if(projectile.GetComponent<Bullet>())
+            {
+                projectile.GetComponent<Bullet>().goingLeft = goingLeft;
+            }
+        
     }
 }
