@@ -35,14 +35,14 @@ public class Shooting : MonoBehaviour
         //Debug.DrawLine(transform.position, transform.position + Vector3.right * 1.8f, Color.red);
 
         //Allows for a cooldown between shots
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Return))
         {
-            //Says pressing Spacebar
-            Debug.Log("Pressing Spacebar");
+            //Says pressing Enter
+            Debug.Log("Pressing Enter");
 
-            //If a bullet is still within the Raycast range (end variable, currently 2f
-            //or 2 units) another bullet cannot be shot.
-            if (Physics.Raycast(transform.position, Vector3.right, out hit, 1.8f))
+            //If a bullet is still within the Raycast range (end variable)
+            //another bullet cannot be shot.
+            if (Physics.Raycast(transform.position, Vector3.right, out hit, 4.2f))
             {
                 //Debug.Log("Raycast Active");
 

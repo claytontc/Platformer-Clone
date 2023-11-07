@@ -50,9 +50,9 @@ public class PlayerController : MonoBehaviour
         //Debug.DrawLine(transform.position, transform.position + Vector3.down * 1.5f, Color.red);
 
         //Handles jumping
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.Space))
         {
-            print("Pressing Key W");
+            print("Pressing Space");
 
             if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f))
             {
