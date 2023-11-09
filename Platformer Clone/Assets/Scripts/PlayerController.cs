@@ -11,7 +11,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //move speed
-    public float speed = 15f;
+    public float playerSpeed = 15f;
 
     //jump height/force
     public float jumpForce = 5f;
@@ -22,11 +22,16 @@ public class PlayerController : MonoBehaviour
     //adds ridigbody variable (as opposed to the class) so theres something we can reference
     private Rigidbody rigidbody;
 
+    //T/F values to which direction the Player is facing
+    public bool isFacingRight = true;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         //set reference to the player's attached rigidbody
         rigidbody = GetComponent<Rigidbody>();
+        transform.Rotate(Vector3.up * playerSpeed/3 * Time.deltaTime);
         
     }
 
@@ -36,13 +41,34 @@ public class PlayerController : MonoBehaviour
         //Allows the Player to move left and right
         if (Input.GetKey(KeyCode.A))
         {
+            
+            if (isFacingRight == true)
+            {
+                Flip();
+            }
+            else
+            {
+
+            }
             print("Pressing Key A");
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            transform.position += Vector3.left * playerSpeed * Time.deltaTime;
+            //transform.position += transform.forward * Time.deltaTime * speed;
+            
         }
         if (Input.GetKey(KeyCode.D))
         {
+            if (isFacingRight== false)
+            {
+                Flip();
+                
+            }
+            else
+            {
+
+            }
             print("Pressing Key D");
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            transform.position += Vector3.right * playerSpeed * Time.deltaTime;
+            
         }
 
 
@@ -63,5 +89,12 @@ public class PlayerController : MonoBehaviour
             
 
         }
+    }
+
+
+    public void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        transform.Rotate(0, 180.0f, 0);
     }
 }

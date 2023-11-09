@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     public float speed = 5f;
 
     //Bullet direction
-    public bool goingLeft;
+    public bool facingLeft;
 
     //Despawn Timer
     public float despawnTime = 2.5f;
@@ -23,11 +23,11 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         //Bullet will go at (speed) in whichever direction (hopefully)
-        if (goingLeft == true)
+        if (facingLeft == true)
         {
             transform.position += speed * Vector3.left * Time.deltaTime;
         }
-        if(goingLeft == false)
+        if(facingLeft == false)
         {
             transform.position += speed * Vector3.right * Time.deltaTime;
         }

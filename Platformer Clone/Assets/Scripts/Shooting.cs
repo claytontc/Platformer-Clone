@@ -42,7 +42,8 @@ public class Shooting : MonoBehaviour
 
             //If a bullet is still within the Raycast range (end variable)
             //another bullet cannot be shot.
-            if (Physics.Raycast(transform.position, Vector3.right, out hit, 4.2f))
+
+            if (Physics.Raycast(transform.position, Vector3.right, out hit, 8f))
             {
                 //Debug.Log("Raycast Active");
 
@@ -57,12 +58,24 @@ public class Shooting : MonoBehaviour
                 ///Spacebar will shoot a bullet
                 ShootBullet();
             }
+        
         }
+        ///
     }
 
-    
+    private void FixedUpdate()
+    {
+        if(Input.GetKey(KeyCode.Return))
+        {
+            ShootBullet();
+        }
+
+
+    }
+
+
     /// <summary>
-    /// Will spawn a bulletPrefab on whatever object script is attached to
+    /// Will spawn a bulletPrefab 
     /// </summary>
     public void ShootBullet()
     {
@@ -71,7 +84,7 @@ public class Shooting : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position, projectilePrefab.transform.rotation);
         if (projectile.GetComponent<Bullet>())
         {
-            projectile.GetComponent<Bullet>().goingLeft = goingLeft;
+            projectile.GetComponent<Bullet>().facingLeft = goingLeft;
         }
 
 
