@@ -10,32 +10,23 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public bool goingLeft;
+
+    //Referencing important game objects
     public GameObject projectilePrefab;
     public GameObject Player;
-
-    //Reference an Empty GameObject for bullets to spawn at (end of arm)
     public GameObject spawnPoint;
 
     //Gives Raycast "hit" 
     RaycastHit hit;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
         // Raycast Line from arm
-        //illlustrates cooldown length
-        //Debug.DrawLine(transform.position, transform.position + Vector3.right * 1.8f, Color.red);
+        // illlustrates cooldown length
+        // Debug.DrawLine(transform.position, transform.position + Vector3.right * 1.8f, Color.red);
 
-
-        
         //Allows for a cooldown between shots
         if (Input.GetKey(KeyCode.Return))
         {
@@ -44,7 +35,6 @@ public class Shooting : MonoBehaviour
 
             //If a bullet is still within the Raycast range (end variable)
             //another bullet cannot be shot.
-
             if (Physics.Raycast(transform.position, Vector3.right, out hit, 8f))
             {
                 Debug.Log("Raycast Active");
@@ -53,16 +43,13 @@ public class Shooting : MonoBehaviour
                 {
                     //Nothing if bullet is in the way
                 }
-
             }
             else
             {
                 ///Enter will shoot a bullet
                 ShootBullet();
-            }
-        
-        }
-        
+            }        
+        }        
     }
 
     private void FixedUpdate()
@@ -71,8 +58,6 @@ public class Shooting : MonoBehaviour
         {
             ShootBullet();
         }
-
-
     }
 
 
@@ -85,9 +70,6 @@ public class Shooting : MonoBehaviour
         // made a spawnPoint because it was shooting multiple, so it is in the middle of the raycast
         GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position,
         projectilePrefab.transform.rotation);
-        
-
-
     }
 
 

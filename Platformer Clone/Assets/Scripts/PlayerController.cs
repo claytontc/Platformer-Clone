@@ -29,8 +29,9 @@ public class PlayerController : MonoBehaviour
     public float hitPoints = 99;
 
     //Time player will blink after taking damage
-    public float blinkTime = 5f;
+    public float blinkTime = .3f;
 
+    //reference shootingArm for blink coroutine
     public Shooting shootingArm;
 
 
@@ -40,8 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         //set reference to the player's attached rigidbody
         rigidbody = GetComponent<Rigidbody>();
-        //transform.Rotate(Vector3.up * playerSpeed/3 * Time.deltaTime);
-        
+        //transform.Rotate(Vector3.up * playerSpeed/3 * Time.deltaTime);        
     }
 
     // Update is called once per frame
@@ -49,15 +49,10 @@ public class PlayerController : MonoBehaviour
     {
         //Allows the Player to move left and right
         if (Input.GetKey(KeyCode.A))
-        {
-            
+        {           
             if (isFacingRight == true)
             {
                 Flip();
-            }
-            else
-            {
-
             }
             print("Pressing Key A");
             transform.position += Vector3.left * playerSpeed * Time.deltaTime;
@@ -69,17 +64,10 @@ public class PlayerController : MonoBehaviour
             if (isFacingRight== false)
             {
                 Flip();
-                
-            }
-            else
-            {
-
             }
             print("Pressing Key D");
             transform.position += Vector3.right * playerSpeed * Time.deltaTime;
-            
         }
-
 
         //Raycast line from Player down
         //Debug.DrawLine(transform.position, transform.position + Vector3.down * 1.5f, Color.red);
@@ -95,11 +83,7 @@ public class PlayerController : MonoBehaviour
                 //transform.position += Vector3.up * jumpForce * Time.deltaTime;
                 rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
-            
-
         }
-
-
     }
 
 
@@ -112,6 +96,8 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Blink());
         }
     }
+
+
 
     //Will make the Player blink when damaged
     public IEnumerator Blink()
@@ -129,12 +115,14 @@ public class PlayerController : MonoBehaviour
                 GetComponent<MeshRenderer>().enabled = true;
                 shootingArm.GetComponent<MeshRenderer>().enabled = true;
             }
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(blinkTime);
             
         }
         GetComponent<MeshRenderer>().enabled = true;
         shootingArm.GetComponent<MeshRenderer>().enabled = true;
     }
+
+
 
     //Rotate Player and invert bool
     public void Flip()

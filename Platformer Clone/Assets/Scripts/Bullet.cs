@@ -23,10 +23,6 @@ public class Bullet : MonoBehaviour
     //facing right
     //public bool isFacingRight;
 
-    private void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -38,14 +34,10 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-
             transform.position += speed * Vector3.left * Time.deltaTime;
-        }
-
-        
+        }       
         //Despawn Bullets
         StartCoroutine(Despawn());
-
     }
 
 
