@@ -119,5 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  goingLeft: 0
+  Player: {fileID: 5676214174540533254, guid: 395e9c9a485064d17b57ae399104a3ee, type: 3}
+  playerController: {fileID: 4643637295886018902, guid: 395e9c9a485064d17b57ae399104a3ee, type: 3}
   despawnTime: 1
+  isFacingRight: 0

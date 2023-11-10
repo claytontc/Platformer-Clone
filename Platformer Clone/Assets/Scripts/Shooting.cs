@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author:Riley Conlon
- * Date: 11/6/23
+ * Date: 11/9/23
  * Function: Will code the shooting mechanic
  */
 
@@ -81,11 +81,9 @@ public class Shooting : MonoBehaviour
     {
         //Spawn bullets at spawnPoint at the end of arm
         // made a spawnPoint because it was shooting multiple, so it is in the middle of the raycast
-        GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position, projectilePrefab.transform.rotation);
-        if (projectile.GetComponent<Bullet>())
-        {
-            projectile.GetComponent<Bullet>().facingLeft = goingLeft;
-        }
+        GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position,
+        projectilePrefab.transform.rotation);
+        
 
 
     }

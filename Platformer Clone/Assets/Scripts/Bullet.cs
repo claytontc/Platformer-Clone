@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author:Riley Conlon
- * Date: 11/6/23
+ * Date: 11/9/23
  * Function: Gives the bullet Prefab speed and direction
  */
 
@@ -13,32 +13,40 @@ public class Bullet : MonoBehaviour
     //Bullet speed
     public float speed = 5f;
 
-    //Bullet direction
-    public bool facingLeft;
+    //reference the playercontroller script
+    public GameObject Player;
+    public PlayerController playerController;
 
     //Despawn Timer
     public float despawnTime = 2.5f;
 
+    //facing right
+    //public bool isFacingRight;
+
+    private void Start()
+    {
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
-        //Bullet will go at (speed) in whichever direction (hopefully)
-        if (facingLeft == true)
-        {
-            transform.position += speed * Vector3.left * Time.deltaTime;
-        }
-        if(facingLeft == false)
+        //if (playerController.isFacingRight == true)
+        if(transform.position.z <= -0.1 )
         {
             transform.position += speed * Vector3.right * Time.deltaTime;
         }
+        else
+        {
 
+            transform.position += speed * Vector3.left * Time.deltaTime;
+        }
+
+        
         //Despawn Bullets
         StartCoroutine(Despawn());
-         
+
     }
-
-    
-
 
 
     //Will despawn bullets after a certain time

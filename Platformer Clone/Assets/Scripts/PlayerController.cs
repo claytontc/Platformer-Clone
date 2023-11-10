@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: Riley Conlon
- * Date: 11/6/23
+ * Date: 11/9/23
  * Function: Allows player to be associated with certain mechanics (Lives, Movement, etc.)
  */
 
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         //set reference to the player's attached rigidbody
         rigidbody = GetComponent<Rigidbody>();
-        transform.Rotate(Vector3.up * playerSpeed/3 * Time.deltaTime);
+        //transform.Rotate(Vector3.up * playerSpeed/3 * Time.deltaTime);
         
     }
 
