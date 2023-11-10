@@ -34,6 +34,8 @@ public class Shooting : MonoBehaviour
         //illlustrates cooldown length
         //Debug.DrawLine(transform.position, transform.position + Vector3.right * 1.8f, Color.red);
 
+
+        
         //Allows for a cooldown between shots
         if (Input.GetKey(KeyCode.Return))
         {
@@ -45,7 +47,7 @@ public class Shooting : MonoBehaviour
 
             if (Physics.Raycast(transform.position, Vector3.right, out hit, 8f))
             {
-                //Debug.Log("Raycast Active");
+                Debug.Log("Raycast Active");
 
                 if (hit.collider.name == "Bullet")
                 {
@@ -55,12 +57,12 @@ public class Shooting : MonoBehaviour
             }
             else
             {
-                ///Spacebar will shoot a bullet
+                ///Enter will shoot a bullet
                 ShootBullet();
             }
         
         }
-        ///
+        
     }
 
     private void FixedUpdate()

@@ -24,7 +24,16 @@ public class PlayerController : MonoBehaviour
 
     //T/F values to which direction the Player is facing
     public bool isFacingRight = true;
-    
+
+    //Amount of damage Player can take before death
+    public float hitPoints = 99;
+
+    //Time player will blink after taking damage
+    public float blinkTime = 5f;
+
+    public Shooting shootingArm;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -89,9 +98,45 @@ public class PlayerController : MonoBehaviour
             
 
         }
+
+
     }
 
 
+    //Allows things to be triggered, (takes damage, increase health, pickup items)
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            hitPoints = hitPoints - 15;
+            StartCoroutine(Blink());
+        }
+    }
+
+    //Will make the Player blink when damaged
+    public IEnumerator Blink()
+    {
+        
+        for (int index = 0; index < 17; index++)
+        {
+            if(index % 2 == 0)
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+                shootingArm.GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().enabled = true;
+                shootingArm.GetComponent<MeshRenderer>().enabled = true;
+            }
+            yield return new WaitForSeconds(0.3f);
+            
+        }
+        GetComponent<MeshRenderer>().enabled = true;
+        shootingArm.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    //Rotate Player and invert bool
     public void Flip()
     {
         isFacingRight = !isFacingRight;
