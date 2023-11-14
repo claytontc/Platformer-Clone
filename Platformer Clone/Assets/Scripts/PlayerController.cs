@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /*
  * Author: Riley Conlon
@@ -37,6 +38,8 @@ public class PlayerController : MonoBehaviour
     //indicates if the player is flashing
     public bool isBlinking = false;
 
+    //bullet count
+    public float bulletCount = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +58,7 @@ public class PlayerController : MonoBehaviour
             {
                 Flip();
             }
-            print("Pressing Key A");
+            //print("Pressing Key A");
             transform.position += Vector3.left * playerSpeed * Time.deltaTime;
             //transform.position += transform.forward * Time.deltaTime * speed;
             
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
             {
                 Flip();
             }
-            print("Pressing Key D");
+            //print("Pressing Key D");
             transform.position += Vector3.right * playerSpeed * Time.deltaTime;
         }
 
@@ -76,7 +79,7 @@ public class PlayerController : MonoBehaviour
         //Handles jumping
         if (Input.GetKey(KeyCode.Space))
         {
-            print("Pressing Space");
+            //print("Pressing Space");
 
             if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f))
             {
@@ -85,6 +88,7 @@ public class PlayerController : MonoBehaviour
                 rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
+        gameOver();
     }
 
 
@@ -125,6 +129,15 @@ public class PlayerController : MonoBehaviour
         isBlinking = false;
     }
 
+    //Loads the Game Over Scene
+    public void gameOver()
+    {
+        if (hitPoints <= 0)
+        {
+            SceneManager.LoadScene(1);
+            Debug.Log("Load different Scene");
+        }
+    }
 
     //Rotate Player and invert bool
     public void Flip()

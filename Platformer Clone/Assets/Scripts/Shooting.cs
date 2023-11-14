@@ -15,6 +15,7 @@ public class Shooting : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject Player;
     public GameObject spawnPoint;
+    public PlayerController playerController;
 
     //Gives Raycast "hit" 
     RaycastHit hit;
@@ -27,7 +28,7 @@ public class Shooting : MonoBehaviour
         // illlustrates cooldown length
         // Debug.DrawLine(transform.position, transform.position + Vector3.right * 1.8f, Color.red);
 
-        //Allows for a cooldown between shots
+        /*/Allows for a cooldown between shots
         if (Input.GetKey(KeyCode.Return))
         {
             //Says pressing Enter
@@ -48,8 +49,10 @@ public class Shooting : MonoBehaviour
             {
                 ///Enter will shoot a bullet
                 ShootBullet();
-            }        
-        }        
+            }
+        }
+            /*/
+                
     }
 
     private void FixedUpdate()
@@ -66,10 +69,16 @@ public class Shooting : MonoBehaviour
     /// </summary>
     public void ShootBullet()
     {
-        //Spawn bullets at spawnPoint at the end of arm
-        // made a spawnPoint because it was shooting multiple, so it is in the middle of the raycast
-        GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position,
-        projectilePrefab.transform.rotation);
+        if (playerController.bulletCount > 0)
+        {
+            playerController.bulletCount--;
+
+            //Spawn bullets at spawnPoint at the end of arm
+            // made a spawnPoint because it was shooting multiple, so it is in the middle of the raycast
+            GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position,
+            projectilePrefab.transform.rotation);
+        }
+
     }
 
 

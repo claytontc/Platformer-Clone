@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     public float speed = 5f;
 
     //reference the playercontroller script
-    public GameObject Player;
+    //public GameObject Player;
     public PlayerController playerController;
 
     //Despawn Timer
@@ -45,6 +45,8 @@ public class Bullet : MonoBehaviour
     public IEnumerator Despawn()
     {
         yield return new WaitForSeconds(despawnTime);
+        playerController.bulletCount++;
         Destroy(this.gameObject);
+        
     }
 }

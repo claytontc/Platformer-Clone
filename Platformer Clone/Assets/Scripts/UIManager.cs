@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class UIManager : MonoBehaviour
@@ -22,4 +23,21 @@ public class UIManager : MonoBehaviour
     {
         livesText.text = "HP:" + player.hitPoints;
     }
+
+    //Quits the Game
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    //Loads the first scene
+    public void SwitchScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+
+
+
+
 }
