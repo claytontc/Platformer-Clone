@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: Riley Conlon
- * Date: 11/9/23
+ * Date: 11/13/23
  * Function: Allows player to be associated with certain mechanics (Lives, Movement, etc.)
  */
 
@@ -34,14 +34,15 @@ public class PlayerController : MonoBehaviour
     //reference shootingArm for blink coroutine
     public Shooting shootingArm;
 
+    //indicates if the player is flashing
+    public bool isBlinking = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
         //set reference to the player's attached rigidbody
-        rigidbody = GetComponent<Rigidbody>();
-        //transform.Rotate(Vector3.up * playerSpeed/3 * Time.deltaTime);        
+        rigidbody = GetComponent<Rigidbody>();      
     }
 
     // Update is called once per frame
@@ -92,17 +93,18 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
-            hitPoints = hitPoints - 15;
-            StartCoroutine(Blink());
+            if (isBlinking == false)
+            {
+                hitPoints = hitPoints - 15;
+                StartCoroutine(Blink());
+            }
         }
     }
-
-
 
     //Will make the Player blink when damaged
     public IEnumerator Blink()
     {
-        
+        isBlinking = true;
         for (int index = 0; index < 17; index++)
         {
             if(index % 2 == 0)
@@ -120,8 +122,8 @@ public class PlayerController : MonoBehaviour
         }
         GetComponent<MeshRenderer>().enabled = true;
         shootingArm.GetComponent<MeshRenderer>().enabled = true;
+        isBlinking = false;
     }
-
 
 
     //Rotate Player and invert bool
