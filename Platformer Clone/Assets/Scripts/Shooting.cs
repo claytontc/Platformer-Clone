@@ -20,15 +20,22 @@ public class Shooting : MonoBehaviour
     //Gives Raycast "hit" 
     RaycastHit hit;
 
+    //Whether the gun is allowed to shoot
+    //public bool canShoot = true;
+
+    //Time Between shots
+    //public int shootDelay = 1;
 
     // Update is called once per frame
     void Update()
     {
         // Raycast Line from arm
         // illlustrates cooldown length
-        // Debug.DrawLine(transform.position, transform.position + Vector3.right * 1.8f, Color.red);
+        Debug.DrawLine(transform.position, transform.position + Vector3.right * 6, Color.red);
+        Debug.DrawLine(transform.position, transform.position + Vector3.left * 6, Color.red);
 
-        /*/Allows for a cooldown between shots
+
+        //Allows for a cooldown between shots
         if (Input.GetKey(KeyCode.Return))
         {
             //Says pressing Enter
@@ -36,7 +43,21 @@ public class Shooting : MonoBehaviour
 
             //If a bullet is still within the Raycast range (end variable)
             //another bullet cannot be shot.
-            if (Physics.Raycast(transform.position, Vector3.right, out hit, 8f))
+            if (Physics.Raycast(transform.position, Vector3.right, out hit, 6f))
+            {
+                Debug.Log("Raycast Active");
+
+                if (hit.collider.name == "Bullet")
+                {
+                    //Nothing if bullet is in the way
+                }
+            }
+            else
+            {
+                ///Enter will shoot a bullet
+                ShootBullet();
+            }
+            if (Physics.Raycast(transform.position, Vector3.left, out hit, 6f))
             {
                 Debug.Log("Raycast Active");
 
@@ -51,17 +72,11 @@ public class Shooting : MonoBehaviour
                 ShootBullet();
             }
         }
-            /*/
-                
+            
+     
     }
+    
 
-    private void FixedUpdate()
-    {
-        if(Input.GetKey(KeyCode.Return))
-        {
-            ShootBullet();
-        }
-    }
 
 
     /// <summary>
@@ -69,16 +84,22 @@ public class Shooting : MonoBehaviour
     /// </summary>
     public void ShootBullet()
     {
-        if (playerController.bulletCount > 0)
-        {
-            playerController.bulletCount--;
 
-            //Spawn bullets at spawnPoint at the end of arm
-            // made a spawnPoint because it was shooting multiple, so it is in the middle of the raycast
-            GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position,
-            projectilePrefab.transform.rotation);
-        }
+        //canShoot = false;
+        //Spawn bullets at spawnPoint at the end of arm
+        // made a spawnPoint because it was shooting multiple, so it is in the middle of the raycast
+        GameObject projectile = Instantiate(projectilePrefab, spawnPoint.transform.position,
+        projectilePrefab.transform.rotation);
 
+
+        //StartCoroutine(ShootDelay());
+
+    }
+
+    IEnumerator ShootDelay()
+    {
+        yield return new WaitForSeconds(1);
+        //canShoot = true;
     }
 
 

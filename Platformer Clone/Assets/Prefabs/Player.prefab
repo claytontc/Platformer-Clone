@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 701207858335758045}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.018, y: -1, z: -0.002}
+  m_LocalPosition: {x: -0.057, y: -1, z: 0.904}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -185,6 +185,8 @@ MonoBehaviour:
   isFacingRight: 1
   hitPoints: 99
   blinkTime: 5
+  shootingArm: {fileID: 0}
+  isBlinking: 0
 --- !u!1 &6943382398042676323
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3bdcae33ffba4fbd968da26b91d3b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goingLeft: 0
   projectilePrefab: {fileID: 8435075534240973156, guid: b8cc2a887f30a4d3ca2fc4d1c27af886, type: 3}
   Player: {fileID: 3131510933368206431}
   spawnPoint: {fileID: 701207858335758045}
+  playerController: {fileID: 0}

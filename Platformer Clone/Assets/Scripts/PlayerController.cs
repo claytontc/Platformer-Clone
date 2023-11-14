@@ -38,14 +38,14 @@ public class PlayerController : MonoBehaviour
     //indicates if the player is flashing
     public bool isBlinking = false;
 
-    //bullet count
-    public float bulletCount = 2f;
+    //public Vector3 startPosition == transform.position; 
 
     // Start is called before the first frame update
     void Start()
     {
         //set reference to the player's attached rigidbody
-        rigidbody = GetComponent<Rigidbody>();      
+        rigidbody = GetComponent<Rigidbody>();
+        //transform.position = startPosition;   
     }
 
     // Update is called once per frame
@@ -103,6 +103,22 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Blink());
             }
         }
+        if (other.gameObject.tag == "Heavy Enemy")
+        {
+            if (isBlinking == false)
+            {
+                hitPoints = hitPoints - 35;
+                StartCoroutine(Blink());
+            }
+        }
+        /*
+        if(other.gameObject.tag == "Portal")
+        {
+            startPosition = other.gameObject.GetComponent<Portal>().spawnPoint.transform.position;
+
+            transform.position = startPosition;
+        }
+        */
     }
 
     //Will make the Player blink when damaged

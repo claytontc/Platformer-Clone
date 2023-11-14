@@ -15,6 +15,10 @@ public class Enemy : MonoBehaviour
     public GameObject leftPoint;
     public GameObject rightPoint;
     public bool goingLeft;
+
+    //Enemy health
+    public int HP = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,16 +29,16 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        EnemyMove();
     }
     /// <summary>
     /// allows the enemy to move from side to side
     /// </summary>
     private void EnemyMove()
     {
-        if(goingLeft == true)
+        if (goingLeft == true)
         {
-            if(transform.position.x <= leftPos.x)
+            if (transform.position.x <= leftPos.x)
             {
                 goingLeft = false;
             }
@@ -45,7 +49,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            if(transform.position.x >= rightPos.x)
+            if (transform.position.x >= rightPos.x)
             {
                 goingLeft = true;
             }
@@ -55,4 +59,27 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
+
+    //Kills enemy if touch bullet
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            HP--;
+            Dead();
+
+        }
+    }
+
+    //Kills enemy
+    public void Dead()
+    {
+        if(HP <= 0)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+    
+
 }

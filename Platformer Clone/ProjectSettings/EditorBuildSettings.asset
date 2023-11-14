@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RileyScene.unity
+    path: Assets/Scenes/Scene 0.unity
     guid: fb870ad3e5a2545bc8889c534280c62a
   - enabled: 1
-    path: Assets/Scenes/Game Over.unity
+    path: Assets/Scenes/Game Over 0.unity
     guid: afc6e84207d7749108035a7240c4703d
   m_configObjects: {}

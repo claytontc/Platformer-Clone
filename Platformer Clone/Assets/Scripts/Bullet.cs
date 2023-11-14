@@ -20,9 +20,6 @@ public class Bullet : MonoBehaviour
     //Despawn Timer
     public float despawnTime = 2.5f;
 
-    //facing right
-    //public bool isFacingRight;
-
 
     // Update is called once per frame
     void Update()
@@ -45,7 +42,6 @@ public class Bullet : MonoBehaviour
     public IEnumerator Despawn()
     {
         yield return new WaitForSeconds(despawnTime);
-        playerController.bulletCount++;
         Destroy(this.gameObject);
         
     }
