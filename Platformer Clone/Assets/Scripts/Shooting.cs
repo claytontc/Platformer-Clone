@@ -31,8 +31,8 @@ public class Shooting : MonoBehaviour
     {
         // Raycast Line from arm
         // illlustrates cooldown length
-        Debug.DrawLine(transform.position, transform.position + Vector3.right * 6, Color.red);
-        Debug.DrawLine(transform.position, transform.position + Vector3.left * 6, Color.red);
+        //Debug.DrawLine(transform.position, transform.position + Vector3.right * 6, Color.red);
+        //Debug.DrawLine(transform.position, transform.position + Vector3.left * 6, Color.red);
 
 
         //Allows for a cooldown between shots
@@ -45,7 +45,7 @@ public class Shooting : MonoBehaviour
             //another bullet cannot be shot.
             if (Physics.Raycast(transform.position, Vector3.right, out hit, 6f))
             {
-                Debug.Log("Raycast Active");
+                //Debug.Log("Raycast Active");
 
                 if (hit.collider.name == "Bullet")
                 {
@@ -59,7 +59,7 @@ public class Shooting : MonoBehaviour
             }
             if (Physics.Raycast(transform.position, Vector3.left, out hit, 6f))
             {
-                Debug.Log("Raycast Active");
+                //Debug.Log("Raycast Active");
 
                 if (hit.collider.name == "Bullet")
                 {

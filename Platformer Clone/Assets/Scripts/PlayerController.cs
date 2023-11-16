@@ -111,14 +111,14 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Blink());
             }
         }
-        /*
+        
         if(other.gameObject.tag == "Portal")
         {
             startPosition = other.gameObject.GetComponent<Portal>().spawnPoint.transform.position;
 
             transform.position = startPosition;
         }
-        */
+        
     }
 
     //Will make the Player blink when damaged
